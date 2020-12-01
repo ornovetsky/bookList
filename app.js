@@ -47,6 +47,12 @@ setTimeout(function(){
 }, 2000)
 
 }
+// delete a book pressing the X
+UI.prototype.deleteBook = function(target) {
+  if(target.className === 'delete'){
+    target.parentElement.parentElement.remove()
+  }
+}
 
 // UI Proto Clear Fields
 
@@ -88,8 +94,15 @@ ui.clearFields()
 
 }
 
+})
 
+// event listened for the X button (delete a book)
 
+document.getElementById('book-list').addEventListener('click', function(e){
+  const ui = new UI();
+  ui.deleteBook(e.target)
 
+  ui.showAlert('Book removed!', 'success')
 
+  e.preventDefault();
 })
